@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻页时钟</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock-container">
+        <div class="flip-card-group hour-group">
+            <div class="flip-card" data-digit="hours-tens">
+                <div class="card-face top"><span>0</span></div>
+                <div class="card-face bottom"><span>0</span></div>
+                <div class="card-face top-flip"><span>0</span></div>
+                <div class="card-face bottom-flip"><span>0</span></div>
+            </div>
+            <div class="flip-card" data-digit="hours-ones">
+                <div class="card-face top"><span>0</span></div>
+                <div class="card-face bottom"><span>0</span></div>
+                <div class="card-face top-flip"><span>0</span></div>
+                <div class="card-face bottom-flip"><span>0</span></div>
+            </div>
+        </div>
+        <div class="separator">:</div>
+        <div class="flip-card-group minute-group">
+             <div class="flip-card" data-digit="minutes-tens">
+                <div class="card-face top"><span>0</span></div>
+                <div class="card-face bottom"><span>0</span></div>
+                <div class="card-face top-flip"><span>0</span></div>
+                <div class="card-face bottom-flip"><span>0</span></div>
+            </div>
+             <div class="flip-card" data-digit="minutes-ones">
+                <div class="card-face top"><span>0</span></div>
+                <div class="card-face bottom"><span>0</span></div>
+                <div class="card-face top-flip"><span>0</span></div>
+                <div class="card-face bottom-flip"><span>0</span></div>
+            </div>
+        </div>
+        <div class="separator">:</div>
+        <div class="flip-card-group second-group">
+             <div class="flip-card" data-digit="seconds-tens">
+                <div class="card-face top"><span>0</span></div>
+                <div class="card-face bottom"><span>0</span></div>
+                <div class="card-face top-flip"><span>0</span></div>
+                <div class="card-face bottom-flip"><span>0</span></div>
+            </div>
+             <div class="flip-card" data-digit="seconds-ones">
+                <div class="card-face top"><span>0</span></div>
+                <div class="card-face bottom"><span>0</span></div>
+                <div class="card-face top-flip"><span>0</span></div>
+                <div class="card-face bottom-flip"><span>0</span></div>
+            </div>
+        </div>
+        <div class="date-display" id="dateDisplay"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

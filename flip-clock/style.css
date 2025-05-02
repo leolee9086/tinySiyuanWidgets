@@ -1,0 +1,142 @@
+/* tinySiyuanWidgets/flip-clock/style.css */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* 浅灰色背景，更柔和 */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+.clock-container {
+    display: flex;
+    align-items: baseline; /* 让冒号和卡片底部对齐 */
+    background-color: #333; /* 深灰色背景 */
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* 为了日期显示定位 */
+}
+
+.flip-card-group {
+    display: flex;
+}
+
+.flip-card {
+    position: relative;
+    width: 60px;
+    height: 80px;
+    margin: 0 5px;
+    perspective: 500px; /* 增加透视效果 */
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 80px;
+    text-align: center;
+    color: #f8f8f8; /* 亮白色数字 */
+}
+
+.card-face {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #282828; /* 卡片颜色比背景稍浅 */
+    overflow: hidden;
+    backface-visibility: hidden; /* 隐藏背面 */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 确保数字垂直居中 */
+}
+
+.card-face span {
+    display: block;
+}
+
+.card-face.top,
+.card-face.top-flip {
+    top: 0;
+    border-bottom: 1px solid #111; /* 中间分隔线 */
+    border-radius: 5px 5px 0 0;
+    align-items: flex-end; /* 顶部数字靠下 */
+}
+
+.card-face.top span,
+.card-face.top-flip span {
+    transform: translateY(50%);
+}
+
+.card-face.bottom,
+.card-face.bottom-flip {
+    bottom: 0;
+    border-radius: 0 0 5px 5px;
+    align-items: flex-start; /* 底部数字靠上 */
+}
+
+.card-face.bottom span,
+.card-face.bottom-flip span {
+    transform: translateY(-50%);
+}
+
+.card-face.top-flip {
+    transform-origin: bottom;
+    transform: rotateX(0deg);
+    z-index: 1; /* 确保翻转动画在上方 */
+    background-color: #222; /* 翻转时颜色稍深 */
+}
+
+.card-face.bottom-flip {
+    transform-origin: top;
+    transform: rotateX(90deg);
+    z-index: 1;
+    background-color: #222;
+}
+
+.flip-card.flip .top-flip {
+    animation: flip-top 0.5s ease-in forwards;
+}
+
+.flip-card.flip .bottom-flip {
+    animation: flip-bottom 0.5s ease-in 0.5s forwards;
+}
+
+@keyframes flip-top {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(-90deg);
+    }
+}
+
+@keyframes flip-bottom {
+    0% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+.separator {
+    font-size: 48px;
+    font-weight: bold;
+    color: #f8f8f8;
+    margin: 0 5px;
+    line-height: 80px; /* 与卡片高度对齐 */
+}
+
+.date-display {
+    position: absolute;
+    bottom: -30px; /* 放置在卡片下方 */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #555;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 3px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+} 

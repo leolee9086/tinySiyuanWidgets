@@ -1,0 +1,270 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "PingFang SC", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    padding: 20px;
+}
+
+.hourglass-container {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.hourglass-svg {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
+    transform: translateZ(0); /* 解决某些浏览器的渲染问题 */
+}
+
+/* SVG 元素样式 */
+.hourglass-frame {
+    fill: rgba(230, 240, 250, 0.3);
+    stroke: rgba(180, 200, 220, 0.7);
+    stroke-width: 1.5;
+}
+
+.wood-piece {
+    fill: #9c6f44;
+    stroke: #855e36;
+    stroke-width: 1;
+}
+
+.top-wood {
+    fill: linear-gradient(to bottom, #b07c48, #9c6f44);
+}
+
+.bottom-wood {
+    fill: linear-gradient(to top, #b07c48, #9c6f44);
+}
+
+.connector-line {
+    stroke: rgba(180, 200, 220, 0.4);
+    stroke-width: 0.8;
+    stroke-dasharray: 2, 3;
+}
+
+.neck-circle {
+    fill: rgba(230, 240, 250, 0.3);
+    stroke: rgba(180, 200, 220, 0.7);
+    stroke-width: 1;
+}
+
+.sand {
+    fill: url(#sand-pattern);
+}
+
+.top-sand {
+    fill: linear-gradient(to bottom, #f6d365 0%, #fda085 100%);
+    transform-origin: center bottom;
+}
+
+.bottom-sand {
+    fill: linear-gradient(to top, #f6d365 0%, #fda085 100%);
+    transform-origin: center top;
+}
+
+.falling-sand circle {
+    fill: #fda085;
+    opacity: 0;
+}
+
+.highlight {
+    fill: rgba(255, 255, 255, 0.25);
+    opacity: 0.7;
+}
+
+.time-display {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+    color: var(--b3-theme-on-surface);
+    margin-top: 10px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+}
+
+.controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.time-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.time-btn {
+    padding: 8px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    background-color: var(--b3-theme-background);
+    color: var(--b3-theme-on-surface);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.time-btn.active, .time-btn:hover {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #333;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--b3-theme-background);
+    color: var(--b3-theme-on-surface);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn.start {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: white;
+}
+
+.btn.pause {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #333;
+}
+
+.btn.reset {
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    color: #333;
+}
+
+/* 动画效果 */
+@keyframes flow-sand {
+    from { height: 55px; }
+    to { height: 0; }
+}
+
+@keyframes receive-sand {
+    from { height: 0; }
+    to { height: 55px; }
+}
+
+@keyframes falling-sand {
+    0% {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+}
+
+/* 运行中的动画 */
+.running .top-sand {
+    animation: flow-sand linear forwards;
+}
+
+.running .bottom-sand {
+    animation: receive-sand linear forwards;
+}
+
+.running .falling-sand circle:nth-child(1) {
+    animation: falling-sand 0.9s infinite;
+}
+
+.running .falling-sand circle:nth-child(2) {
+    animation: falling-sand 0.9s 0.2s infinite;
+}
+
+.running .falling-sand circle:nth-child(3) {
+    animation: falling-sand 0.9s 0.4s infinite;
+}
+
+.running .falling-sand circle:nth-child(4) {
+    animation: falling-sand 0.9s 0.6s infinite;
+}
+
+/* 暂停状态 */
+.paused .top-sand,
+.paused .bottom-sand,
+.paused .falling-sand circle {
+    animation-play-state: paused;
+}
+
+/* 暗黑模式适配 */
+@media (prefers-color-scheme: dark) {
+    .wood-piece {
+        fill: #A47551;
+        stroke: #8B5A3B;
+    }
+    
+    .top-wood {
+        fill: linear-gradient(to bottom, #B68766, #A47551);
+    }
+    
+    .bottom-wood {
+        fill: linear-gradient(to top, #B68766, #A47551);
+    }
+    
+    .hourglass-frame {
+        fill: rgba(50, 55, 65, 0.3);
+        stroke: rgba(80, 85, 95, 0.7);
+    }
+    
+    .connector-line {
+        stroke: rgba(80, 85, 95, 0.5);
+    }
+    
+    .neck-circle {
+        fill: rgba(50, 55, 65, 0.3);
+        stroke: rgba(80, 85, 95, 0.7);
+    }
+    
+    .time-btn {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+} 

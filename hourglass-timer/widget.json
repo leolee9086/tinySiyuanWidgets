@@ -1,0 +1,20 @@
+{
+  "name": "hourglass-timer",
+  "author": "织",
+  "url": "https://github.com/siyuan-note/widget-sample",
+  "version": "0.0.1",
+  "displayName": {
+    "default": "沙漏计时器",
+    "zh_CN": "沙漏计时器",
+    "en_US": "Hourglass Timer"
+  },
+  "description": {
+    "default": "可设置时间的沙漏式可视化计时器",
+    "zh_CN": "可设置时间的沙漏式可视化计时器",
+    "en_US": "Visual hourglass timer with customizable time"
+  },
+  "readme": {
+    "default": "README.md",
+    "zh_CN": "README_zh_CN.md"
+  }
+} 

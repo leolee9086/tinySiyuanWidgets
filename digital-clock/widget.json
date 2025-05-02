@@ -1,0 +1,16 @@
+{
+  "name": "digital-clock",
+  "author": "leolee9086 & 织",
+  "version": "0.1.0",
+  "minAppVersion": "2.10.0",
+  "displayName": {
+    "default": "Digital Clock",
+    "zh_CN": "数字时钟"
+  },
+  "description": {
+    "default": "A simple digital clock widget.",
+    "zh_CN": "一个简单的数字时钟挂件。"
+  },
+  "readme": "README.md",
+  "keywords": ["clock", "time", "digital"]
+}

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>思源笔记小挂件集合</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: "PingFang SC", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .settings-panel {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .widget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .widget-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .widget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .widget-preview {
+            height: 200px;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .widget-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .widget-info {
+            padding: 15px;
+        }
+        
+        .widget-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .widget-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .widget-actions {
+            padding: 0 15px 15px 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-success {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
+        
+        .preview-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .status-messages {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .status-message {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .status-message:last-child {
+            border-bottom: none;
+        }
+        
+        .success {
+            color: #27ae60;
+        }
+        
+        .error {
+            color: #e74c3c;
+        }
+        
+        .loading {
+            color: #3498db;
+        }
+        
+        .file-list-toggle {
+            color: #3498db;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 10px;
+            display: block;
+            font-size: 14px;
+        }
+        
+        .file-list {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #666;
+            display: none;
+        }
+        
+        .file-list.show {
+            display: block;
+        }
+        
+        .file-list ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .file-list li {
+            margin-bottom: 3px;
+        }
+        
+        @media (max-width: 767px) {
+            .widget-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>思源笔记小挂件集合</h1>
+        
+        <div class="settings-panel">
+            <h2>部署设置</h2>
+            <div class="form-group">
+                <label for="siyuan-url">思源笔记实例 URL：</label>
+                <input type="text" id="siyuan-url" placeholder="http://127.0.0.1:6806" value="http://127.0.0.1:6806">
+            </div>
+            <div class="form-group">
+                <label for="siyuan-token">API Token：</label>
+                <input type="password" id="siyuan-token" placeholder="输入你的思源笔记 API Token">
+            </div>
+            <p>提示：Token通常位于思源笔记设置 - 关于中的API TOKEN部分。</p>
+            
+            <div class="status-messages" id="status-messages">
+                <div class="status-message">准备就绪，请选择要部署的挂件。</div>
+            </div>
+        </div>
+        
+        <div class="widget-grid" id="widget-grid">
+            <!-- 数字时钟挂件 -->
+            <div class="widget-card">
+                <div class="widget-preview">
+                    <iframe src="digital-clock/index.html" class="preview-iframe"></iframe>
+                </div>
+                <div class="widget-info">
+                    <h3 class="widget-title">数字时钟</h3>
+                    <p class="widget-description">简洁的数字时钟挂件，显示当前时间</p>
+                    <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
+                    <div class="file-list">
+                        <ul>
+                            <li>widget.json</li>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-actions">
+                    <button class="btn btn-primary" onclick="previewWidget('digital-clock')">预览</button>
+                    <button class="btn btn-success" onclick="deployWidget('digital-clock')">部署到思源</button>
+                </div>
+            </div>
+            
+            <!-- 模拟时钟挂件 -->
+            <div class="widget-card">
+                <div class="widget-preview">
+                    <iframe src="analog-clock/index.html" class="preview-iframe"></iframe>
+                </div>
+                <div class="widget-info">
+                    <h3 class="widget-title">模拟时钟</h3>
+                    <p class="widget-description">经典的模拟时钟挂件，带有指针动画效果</p>
+                    <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
+                    <div class="file-list">
+                        <ul>
+                            <li>widget.json</li>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-actions">
+                    <button class="btn btn-primary" onclick="previewWidget('analog-clock')">预览</button>
+                    <button class="btn btn-success" onclick="deployWidget('analog-clock')">部署到思源</button>
+                </div>
+            </div>
+            
+            <!-- 世界时钟挂件 -->
+            <div class="widget-card">
+                <div class="widget-preview">
+                    <iframe src="world-clock/index.html" class="preview-iframe"></iframe>
+                </div>
+                <div class="widget-info">
+                    <h3 class="widget-title">世界时钟</h3>
+                    <p class="widget-description">显示多个时区的时间，包括上海、纽约、伦敦和东京</p>
+                    <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
+                    <div class="file-list">
+                        <ul>
+                            <li>widget.json</li>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-actions">
+                    <button class="btn btn-primary" onclick="previewWidget('world-clock')">预览</button>
+                    <button class="btn btn-success" onclick="deployWidget('world-clock')">部署到思源</button>
+                </div>
+            </div>
+            
+            <!-- 番茄钟挂件 -->
+            <div class="widget-card">
+                <div class="widget-preview">
+                    <iframe src="pomodoro-timer/index.html" class="preview-iframe"></iframe>
+                </div>
+                <div class="widget-info">
+                    <h3 class="widget-title">番茄计时器</h3>
+                    <p class="widget-description">25分钟工作，5分钟休息的番茄工作法计时器</p>
+                    <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
+                    <div class="file-list">
+                        <ul>
+                            <li>widget.json</li>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-actions">
+                    <button class="btn btn-primary" onclick="previewWidget('pomodoro-timer')">预览</button>
+                    <button class="btn btn-success" onclick="deployWidget('pomodoro-timer')">部署到思源</button>
+                </div>
+            </div>
+            
+            <!-- 沙漏计时器挂件 -->
+            <div class="widget-card">
+                <div class="widget-preview">
+                    <iframe src="hourglass-timer/index.html" class="preview-iframe"></iframe>
+                </div>
+                <div class="widget-info">
+                    <h3 class="widget-title">沙漏计时器</h3>
+                    <p class="widget-description">可视化的沙漏倒计时效果，支持多种预设时间</p>
+                    <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
+                    <div class="file-list">
+                        <ul>
+                            <li>widget.json</li>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-actions">
+                    <button class="btn btn-primary" onclick="previewWidget('hourglass-timer')">预览</button>
+                    <button class="btn btn-success" onclick="deployWidget('hourglass-timer')">部署到思源</button>
+                </div>
+            </div>
+
+            <!-- 翻页时钟挂件 -->
+            <div class="widget-card">
+                <div class="widget-preview">
+                    <iframe src="flip-clock/index.html" class="preview-iframe"></iframe>
+                </div>
+                <div class="widget-info">
+                    <h3 class="widget-title">翻页时钟</h3>
+                    <p class="widget-description">模拟老式翻页效果的时钟，显示时分秒和日期</p>
+                    <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
+                    <div class="file-list">
+                        <ul>
+                            <li>AInote.md</li>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-actions">
+                    <button class="btn btn-primary" onclick="previewWidget('flip-clock')">预览</button>
+                    <button class="btn btn-success" onclick="deployWidget('flip-clock')">部署到思源</button>
+                </div>
+            </div>
+
+            <!-- 进度条时钟挂件 -->
+            <div class="widget-card">
+                <div class="widget-preview">
+                    <iframe src="progress-clock/index.html" class="preview-iframe"></iframe>
+                </div>
+                <div class="widget-info">
+                    <h3 class="widget-title">进度时钟</h3>
+                    <p class="widget-description">显示数字时间，并附带年/月/周进度条</p>
+                    <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
+                    <div class="file-list">
+                        <ul>
+                            <li>AInote.md</li>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-actions">
+                    <button class="btn btn-primary" onclick="previewWidget('progress-clock')">预览</button>
+                    <button class="btn btn-success" onclick="deployWidget('progress-clock')">部署到思源</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 显示/隐藏文件清单
+        function toggleFileList(element) {
+            const fileList = element.nextElementSibling;
+            fileList.classList.toggle('show');
+            element.textContent = fileList.classList.contains('show') ? "隐藏文件清单" : "查看文件清单";
+        }
+        
+        // 添加状态消息
+        function addStatusMessage(message, type = '') {
+            const statusMessages = document.getElementById('status-messages');
+            const messageElement = document.createElement('div');
+            messageElement.className = `status-message ${type}`;
+            messageElement.textContent = message;
+            statusMessages.appendChild(messageElement);
+            statusMessages.scrollTop = statusMessages.scrollHeight;
+        }
+        
+        // 预览挂件
+        function previewWidget(widgetName) {
+            window.open(`${widgetName}/index.html`, '_blank');
+        }
+        
+        // 部署挂件
+        async function deployWidget(widgetName) {
+            const siyuanUrl = document.getElementById('siyuan-url').value.trim();
+            const siyuanToken = document.getElementById('siyuan-token').value.trim();
+            
+            if (!siyuanUrl) {
+                addStatusMessage('错误：请输入思源笔记实例 URL', 'error');
+                return;
+            }
+            
+            if (!siyuanToken) {
+                addStatusMessage('错误：请输入API Token', 'error');
+                return;
+            }
+            
+            addStatusMessage(`开始部署 "${widgetName}" 挂件...`, 'loading');
+            
+            try {
+                // 获取挂件文件列表
+                const fileListResponse = await fetch(`${widgetName}/file-list.json`).catch(() => {
+                    // 如果不存在文件清单，使用默认文件列表
+                    return {
+                        ok: false,
+                        json: async () => ({
+                            files: ['widget.json', 'index.html', 'style.css', 'script.js']
+                        })
+                    };
+                });
+                
+                const fileList = fileListResponse.ok 
+                    ? await fileListResponse.json() 
+                    : { files: ['widget.json', 'index.html', 'style.css', 'script.js'] };
+                
+                // 部署每个文件
+                for (const filename of fileList.files) {
+                    addStatusMessage(`正在部署文件: ${filename}...`);
+                    
+                    // 获取文件内容
+                    const fileResponse = await fetch(`${widgetName}/${filename}`);
+                    if (!fileResponse.ok) {
+                        addStatusMessage(`错误：无法读取文件 ${filename}`, 'error');
+                        continue;
+                    }
+                    
+                    const fileContent = await fileResponse.text();
+                    const fileBlob = new Blob([fileContent], { type: 'application/octet-stream' });
+                    
+                    // 创建FormData对象
+                    const formData = new FormData();
+                    formData.append('path', `data/widgets/${widgetName}/${filename}`);
+                    formData.append('isDir', 'false');
+                    formData.append('modTime', Date.now().toString());
+                    formData.append('file', fileBlob, filename);
+                    
+                    // 发送到思源笔记API
+                    const apiResponse = await fetch(`${siyuanUrl}/api/file/putFile`, {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Token ${siyuanToken}`
+                        },
+                        body: formData
+                    });
+                    
+                    if (!apiResponse.ok) {
+                        addStatusMessage(`错误：API请求失败 (${apiResponse.status} ${apiResponse.statusText})`, 'error');
+                        continue;
+                    }
+                    
+                    const result = await apiResponse.json();
+                    if (result.code === 0) {
+                        addStatusMessage(`✅ 文件 ${filename} 部署成功`);
+                    } else {
+                        addStatusMessage(`❌ 文件 ${filename} 部署失败: ${result.msg}`, 'error');
+                    }
+                }
+                
+                addStatusMessage(`✅ "${widgetName}" 挂件部署完成，请在思源笔记中刷新挂件列表`, 'success');
+                
+            } catch (error) {
+                addStatusMessage(`❌ 部署过程中发生错误: ${error.message}`, 'error');
+            }
+        }
+    </script>
+</body>
+</html> 

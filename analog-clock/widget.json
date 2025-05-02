@@ -1,0 +1,16 @@
+{
+  "name": "analog-clock",
+  "author": "leolee9086 & 织",
+  "version": "0.1.0",
+  "minAppVersion": "2.10.0",
+  "displayName": {
+    "default": "Analog Clock",
+    "zh_CN": "模拟时钟"
+  },
+  "description": {
+    "default": "A classic analog clock with hands.",
+    "zh_CN": "一个带指针的经典模拟时钟。"
+  },
+  "readme": "README.md",
+  "keywords": ["clock", "time", "analog", "hands"]
+}

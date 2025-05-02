@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>番茄计时器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="timer">
+            <div class="timer-circle">
+                <div class="time-display">25:00</div>
+                <div class="status">专注</div>
+            </div>
+            <div class="progress-ring">
+                <svg height="200" width="200">
+                    <circle class="progress-ring-circle-bg" cx="100" cy="100" r="90" />
+                    <circle class="progress-ring-circle" cx="100" cy="100" r="90" />
+                </svg>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="startBtn" class="btn start">开始</button>
+            <button id="pauseBtn" class="btn pause">暂停</button>
+            <button id="resetBtn" class="btn reset">重置</button>
+        </div>
+        <div class="cycles">
+            <span>周期: </span>
+            <span id="cycleCount">0</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

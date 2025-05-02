@@ -1,0 +1,20 @@
+{
+  "name": "world-clock",
+  "author": "织",
+  "url": "https://github.com/siyuan-note/widget-sample",
+  "version": "0.0.1",
+  "displayName": {
+    "default": "世界时钟",
+    "zh_CN": "世界时钟",
+    "en_US": "World Clock"
+  },
+  "description": {
+    "default": "显示多个时区的时间",
+    "zh_CN": "显示多个时区的时间",
+    "en_US": "Display time from multiple time zones"
+  },
+  "readme": {
+    "default": "README.md",
+    "zh_CN": "README_zh_CN.md"
+  }
+} 

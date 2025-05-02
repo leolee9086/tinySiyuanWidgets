@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 使时钟在 iframe 内垂直居中 */
+    font-family: 'Arial', sans-serif;
+    background-color: transparent; /* 挂件背景透明 */
+}
+
+#clock {
+    font-size: 2em; /* 稍微大一点的字体 */
+    color: var(--b3-theme-on-background); /* 使用思源主题的文字颜色变量 */
+    text-align: center;
+}
+
+/* 可以添加对亮色/暗色主题的适配 */
+/* 例如，在暗色主题下改变颜色 */
+/* html[data-theme-mode="dark"] #clock { color: #eee; } */

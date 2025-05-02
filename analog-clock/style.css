@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 确保时钟在 iframe 中居中 */
+    background-color: transparent;
+}
+
+.clock {
+    width: 150px; /* 时钟大小，可以调整 */
+    height: 150px;
+    border: 3px solid var(--b3-theme-on-background, black); /* 使用主题颜色，提供备用色 */
+    border-radius: 50%;
+    position: relative;
+    background-color: var(--b3-theme-background, white); /* 使用主题背景色 */
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%; /* 基点在中心 */
+    left: 50%;
+    background-color: var(--b3-theme-on-background, black);
+    transform-origin: bottom center; /* 旋转中心在底部中心 */
+    border-radius: 2px; /* 轻微圆角 */
+    z-index: 10;
+}
+
+.hour-hand {
+    width: 4px;
+    height: 30%; /* 时针长度 */
+    transform: translate(-50%, 0) rotate(0deg); /* 初始指向 12 点 */
+}
+
+.minute-hand {
+    width: 3px;
+    height: 40%; /* 分针长度 */
+    transform: translate(-50%, 0) rotate(0deg);
+}
+
+.second-hand {
+    width: 1px;
+    height: 45%; /* 秒针长度 */
+    background-color: red; /* 秒针用红色区分 */
+    transform: translate(-50%, 0) rotate(0deg);
+    z-index: 11; /* 秒针在最上层 */
+}
+
+.center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: var(--b3-theme-on-background, black);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 12; /* 中心点在最最上层 */
+}
+
+/* 可以添加刻度线，但会使 CSS 变复杂，暂时省略 */
+/* .clock::after, .clock::before { ... } */
+/* .hour-marker { ... } */

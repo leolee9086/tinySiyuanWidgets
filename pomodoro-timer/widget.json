@@ -1,0 +1,20 @@
+{
+  "name": "pomodoro-timer",
+  "author": "织",
+  "url": "https://github.com/siyuan-note/widget-sample",
+  "version": "0.0.1",
+  "displayName": {
+    "default": "番茄计时器",
+    "zh_CN": "番茄计时器",
+    "en_US": "Pomodoro Timer"
+  },
+  "description": {
+    "default": "25分钟工作，5分钟休息的番茄工作法计时器",
+    "zh_CN": "25分钟工作，5分钟休息的番茄工作法计时器",
+    "en_US": "25 minutes work, 5 minutes break Pomodoro technique timer"
+  },
+  "readme": {
+    "default": "README.md",
+    "zh_CN": "README_zh_CN.md"
+  }
+} 

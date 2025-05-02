@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "PingFang SC", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    padding: 20px;
+}
+
+.timer {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.timer-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.time-display {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+    color: var(--b3-theme-on-surface);
+}
+
+.status {
+    font-size: 16px;
+    margin-top: 5px;
+    color: var(--b3-theme-on-surface);
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-ring-circle-bg {
+    fill: transparent;
+    stroke: var(--b3-theme-surface);
+    stroke-width: 8;
+}
+
+.progress-ring-circle {
+    fill: transparent;
+    stroke: #e17055;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-ring-circle.break {
+    stroke: #00b894;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--b3-theme-background);
+    color: var(--b3-theme-on-surface);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn.start {
+    background-color: #e17055;
+    color: white;
+}
+
+.btn.pause {
+    background-color: #fdcb6e;
+    color: #333;
+}
+
+.btn.reset {
+    background-color: #636e72;
+    color: white;
+}
+
+.cycles {
+    font-size: 14px;
+    color: var(--b3-theme-on-surface);
+}
+
+/* 暗黑模式适配 */
+@media (prefers-color-scheme: dark) {
+    .btn {
+        background-color: var(--b3-theme-surface);
+    }
+} 

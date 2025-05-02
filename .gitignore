@@ -1,0 +1,13 @@
+# Personal notes and diary - not part of the project
+diary/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# IDE configuration folders
+.vscode/
+.idea/ 

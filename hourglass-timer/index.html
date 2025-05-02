@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>沙漏计时器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="hourglass-container">
+            <svg class="hourglass-svg" width="160" height="240" viewBox="0 0 160 240">
+                <!-- 沙漏顶部木框 -->
+                <rect class="wood-piece top-wood" x="30" y="10" width="100" height="15" rx="3" ry="3" />
+                
+                <!-- 沙漏底部木框 -->
+                <rect class="wood-piece bottom-wood" x="30" y="215" width="100" height="15" rx="3" ry="3" />
+                
+                <!-- 沙漏玻璃外框 -->
+                <path class="hourglass-frame" d="M50,25 L110,25 Q105,60 80,80 Q55,60 50,25 Z 
+                                               M50,215 L110,215 Q105,180 80,160 Q55,180 50,215 Z" />
+                
+                <!-- 连接线 -->
+                <line class="connector-line" x1="50" y1="25" x2="50" y2="215" />
+                <line class="connector-line" x2="110" y1="25" x2="110" y2="215" />
+                
+                <!-- 沙漏颈部 -->
+                <circle class="neck-circle" cx="80" cy="120" r="5" />
+                
+                <!-- 沙子上部容器 -->
+                <clipPath id="top-glass-clip">
+                    <path d="M50,25 L110,25 Q105,60 80,80 Q55,60 50,25 Z" />
+                </clipPath>
+                
+                <!-- 沙子下部容器 -->
+                <clipPath id="bottom-glass-clip">
+                    <path d="M50,215 L110,215 Q105,180 80,160 Q55,180 50,215 Z" />
+                </clipPath>
+                
+                <!-- 顶部沙子 -->
+                <rect class="sand top-sand" x="50" y="25" width="60" height="55" clip-path="url(#top-glass-clip)" />
+                
+                <!-- 底部沙子 -->
+                <rect class="sand bottom-sand" x="50" y="160" width="60" height="0" clip-path="url(#bottom-glass-clip)" />
+                
+                <!-- 落沙粒子 -->
+                <g class="falling-sand">
+                    <circle cx="80" cy="110" r="1.2" />
+                    <circle cx="80" cy="115" r="0.9" />
+                    <circle cx="80" cy="120" r="0.7" />
+                    <circle cx="80" cy="125" r="0.5" />
+                </g>
+                
+                <!-- 高光效果 -->
+                <ellipse class="highlight" cx="65" cy="40" rx="10" ry="7" />
+                <ellipse class="highlight" cx="95" cy="200" rx="10" ry="7" />
+                
+                <!-- 纹理图案 -->
+                <pattern id="sand-pattern" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="0.6" fill="rgba(255, 255, 255, 0.2)" />
+                    <circle cx="7" cy="5" r="0.4" fill="rgba(255, 255, 255, 0.15)" />
+                    <circle cx="4" cy="8" r="0.5" fill="rgba(255, 255, 255, 0.2)" />
+                </pattern>
+            </svg>
+            <div class="time-display">00:10</div>
+        </div>
+        
+        <div class="controls">
+            <div class="time-selector">
+                <button class="time-btn" data-time="60">1分钟</button>
+                <button class="time-btn" data-time="300">5分钟</button>
+                <button class="time-btn active" data-time="600">10分钟</button>
+                <button class="time-btn" data-time="1800">30分钟</button>
+            </div>
+            <div class="action-buttons">
+                <button id="startBtn" class="btn start">开始</button>
+                <button id="pauseBtn" class="btn pause">暂停</button>
+                <button id="resetBtn" class="btn reset">重置</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

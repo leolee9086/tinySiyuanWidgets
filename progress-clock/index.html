@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>进度时钟</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="widget-container">
+        <div class="digital-clock" id="digitalClock">00:00:00</div>
+
+        <div class="progress-section">
+            <div class="progress-item">
+                <span class="progress-label">Year</span>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="yearProgressBar"></div>
+                </div>
+                <span class="progress-text" id="yearProgressText">0/365</span>
+            </div>
+            <div class="progress-item">
+                <span class="progress-label">Month</span>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="monthProgressBar"></div>
+                </div>
+                <span class="progress-text" id="monthProgressText">0/31</span>
+            </div>
+            <div class="progress-item">
+                <span class="progress-label">Week</span>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="weekProgressBar"></div>
+                </div>
+                <span class="progress-text" id="weekProgressText">0/7</span>
+            </div>
+        </div>
+        <div class="widget-title">年月日进度条</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
