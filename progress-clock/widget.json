@@ -1,0 +1,22 @@
+{
+  "name": "progress-clock",
+  "author": "Unknown",
+  "repo": "https://github.com/leolee9086/tinySiyuanWidgets",
+  "version": "0.1.0",
+  "displayName": {
+    "default": "Progress Clock",
+    "zh_CN": "进度时钟"
+  },
+  "description": {
+    "default": "Displays digital time with year/month/week progress bars.",
+    "zh_CN": "显示数字时间，并附带年/月/周进度条"
+  },
+  "readme": {
+    "default": "README.md",
+    "zh_CN": "README_zh_CN.md"
+  },
+  "icon": "icon.png",
+  "target": "Widget",
+  "frontend": "index.html",
+  "required": []
+} 

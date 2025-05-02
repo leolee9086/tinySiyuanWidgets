@@ -1,0 +1,22 @@
+{
+  "name": "flip-clock",
+  "author": "Unknown",
+  "repo": "https://github.com/leolee9086/tinySiyuanWidgets",
+  "version": "0.1.0",
+  "displayName": {
+    "default": "Flip Clock",
+    "zh_CN": "翻页时钟"
+  },
+  "description": {
+    "default": "A retro flip-style clock displaying time and date.",
+    "zh_CN": "模拟老式翻页效果的时钟，显示时分秒和日期"
+  },
+  "readme": {
+    "default": "README.md",
+    "zh_CN": "README_zh_CN.md"
+  },
+  "icon": "icon.png",
+  "target": "Widget",
+  "frontend": "index.html",
+  "required": []
+} 
