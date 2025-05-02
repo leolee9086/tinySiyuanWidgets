@@ -1,0 +1,214 @@
+body {
+    margin: 0;
+    padding: 10px; /* 给一点边距 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent; /* 背景透明 */
+    overflow: hidden; /* 防止内容溢出 */
+}
+
+.clock-container {
+    display: flex;
+    align-items: center;
+    color: var(--b3-theme-on-background);
+    transform: scale(0.8);
+    /* 添加一点间距，让整体更清晰 */
+    column-gap: 0.1em;
+}
+
+/* 数字容器 */
+.digit {
+    width: 30px;
+    height: 60px;
+    position: relative;
+    margin: 0 2px;
+}
+
+/* 分隔符（冒号）样式 */
+.separator {
+    font-size: 2.5em;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0 2px;
+    opacity: 0.8;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.2; }
+}
+
+/* 7段基本样式 */
+.segment {
+    position: absolute;
+    /* 使用备用颜色，并确保主题变量生效 */
+    background-color: var(--b3-theme-on-background, #333); 
+    border-radius: 2px;
+    opacity: 0.1; /* 默认非常暗淡 */
+    transition: opacity 0.1s ease;
+}
+
+/* 水平段 (a, d, g) */
+.segment-a, .segment-d, .segment-g {
+    width: 20px;
+    height: 4px;
+    left: 5px;
+}
+
+/* 垂直段 (b, c, e, f) */
+.segment-b, .segment-c, .segment-e, .segment-f {
+    width: 4px;
+    height: 20px;
+}
+
+/* 上水平段 (a) */
+.segment-a {
+    top: 5px;
+}
+
+/* 右上垂直段 (b) */
+.segment-b {
+    top: 8px;
+    right: 5px;
+}
+
+/* 右下垂直段 (c) */
+.segment-c {
+    bottom: 8px;
+    right: 5px;
+}
+
+/* 下水平段 (d) */
+.segment-d {
+    bottom: 5px;
+}
+
+/* 左下垂直段 (e) */
+.segment-e {
+    bottom: 8px;
+    left: 5px;
+}
+
+/* 左上垂直段 (f) */
+.segment-f {
+    top: 8px;
+    left: 5px;
+}
+
+/* 中间水平段 (g) */
+.segment-g {
+    top: 28px;
+}
+
+/* 0 显示 a, b, c, d, e, f */
+.digit[data-value="0"] .segment-a,
+.digit[data-value="0"] .segment-b,
+.digit[data-value="0"] .segment-c,
+.digit[data-value="0"] .segment-d,
+.digit[data-value="0"] .segment-e,
+.digit[data-value="0"] .segment-f {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* 1 显示 b, c */
+.digit[data-value="1"] .segment-b,
+.digit[data-value="1"] .segment-c {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* 2 显示 a, b, g, e, d */
+.digit[data-value="2"] .segment-a,
+.digit[data-value="2"] .segment-b,
+.digit[data-value="2"] .segment-g,
+.digit[data-value="2"] .segment-e,
+.digit[data-value="2"] .segment-d {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* 3 显示 a, b, g, c, d */
+.digit[data-value="3"] .segment-a,
+.digit[data-value="3"] .segment-b,
+.digit[data-value="3"] .segment-g,
+.digit[data-value="3"] .segment-c,
+.digit[data-value="3"] .segment-d {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* 4 显示 f, g, b, c */
+.digit[data-value="4"] .segment-f,
+.digit[data-value="4"] .segment-g,
+.digit[data-value="4"] .segment-b,
+.digit[data-value="4"] .segment-c {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* 5 显示 a, f, g, c, d */
+.digit[data-value="5"] .segment-a,
+.digit[data-value="5"] .segment-f,
+.digit[data-value="5"] .segment-g,
+.digit[data-value="5"] .segment-c,
+.digit[data-value="5"] .segment-d {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* 6 显示 a, f, g, c, d, e */
+.digit[data-value="6"] .segment-a,
+.digit[data-value="6"] .segment-f,
+.digit[data-value="6"] .segment-g,
+.digit[data-value="6"] .segment-c,
+.digit[data-value="6"] .segment-d,
+.digit[data-value="6"] .segment-e {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* 7 显示 a, b, c */
+.digit[data-value="7"] .segment-a,
+.digit[data-value="7"] .segment-b,
+.digit[data-value="7"] .segment-c {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* 8 显示 a, b, c, d, e, f, g */
+.digit[data-value="8"] .segment-a,
+.digit[data-value="8"] .segment-b,
+.digit[data-value="8"] .segment-c,
+.digit[data-value="8"] .segment-d,
+.digit[data-value="8"] .segment-e,
+.digit[data-value="8"] .segment-f,
+.digit[data-value="8"] .segment-g {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* 9 显示 a, b, c, d, f, g */
+.digit[data-value="9"] .segment-a,
+.digit[data-value="9"] .segment-b,
+.digit[data-value="9"] .segment-c,
+.digit[data-value="9"] .segment-d,
+.digit[data-value="9"] .segment-f,
+.digit[data-value="9"] .segment-g {
+    opacity: 1 !important; /* 强制提高优先级确保显示 */
+}
+
+/* --- 7段数码管样式 --- */
+/* 这里将添加具体的 segment 样式和数字显示规则 */
+
+/* 例如：段的基本样式 */
+/*.digit .segment {*/
+/*    background-color: var(--b3-theme-on-background); /* 点亮颜色 */
+/*    position: absolute;*/
+/*    border-radius: 2px; /* 轻微圆角 */
+/*    opacity: 0.1; /* 熄灭时的透明度 */
+/*}*/
+
+/* 例如：定义7个段的位置和大小 */
+/*.digit .a { top: 0; left: 0.5em; width: 2em; height: 0.5em; }*/
+/* ... 其他段 b, c, d, e, f, g ... */
+
+/* 例如：数字 1 需要点亮 b, c 段 */
+/*.digit[data-value="1"] .b,*/
+/*.digit[data-value="1"] .c { opacity: 1; }*/
+
+/* ... 其他数字 0, 2-9 的规则 ... */ 

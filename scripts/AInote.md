@@ -51,3 +51,27 @@
     *   **功能**: 为每个挂件提供文件清单，便于部署工具识别需要部署的文件。
     *   **内容**: 包含widget.json、index.html、style.css、script.js和AInote.md文件。
     *   **目的**: 确保部署工具能够准确地部署所有必要文件。 
+
+## 2025-05-03 00:44 (织)
+
+*   **创建**: `generate-index.js`
+    *   **功能**: 自动生成 `index.html` 文件，扫描所有挂件并生成展示页面。
+    *   **实现细节**:
+        *   扫描项目目录下的所有挂件文件夹，忽略非挂件目录
+        *   读取每个挂件的 `widget.json` 文件获取元数据
+        *   为每个挂件生成展示卡片
+        *   自动创建缺失的 `file-list.json` 文件
+        *   可选参数 `--update-readme` 用于更新 README.md 的挂件列表
+        *   使用模板文件系统，便于统一修改样式
+    *   **优势**:
+        *   无需手动编辑 index.html，减少错误
+        *   统一所有挂件的展示风格
+        *   简化新挂件的添加流程
+        *   自动生成完整挂件列表
+    *   **用法**: `node scripts/generate-index.js [--update-readme]`
+    *   **提升**: 建议未来考虑增加 watch 模式，实时监控挂件变更并自动更新
+
+*   **创建**: `templates/widget-card.template.html`
+    *   **功能**: 为生成器提供挂件卡片的 HTML 模板
+    *   **作用**: 将挂件的展示风格与生成逻辑分离，便于后续调整布局和样式
+    *   **变量**: 使用 `${widgetFolder}`, `${displayName}`, `${description}`, `${fileListHtml}` 作为替换变量 

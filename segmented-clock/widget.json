@@ -1,0 +1,28 @@
+{
+  "name": "segmented-clock",
+  "author": "leolee9086 & 织",
+  "url": "https://github.com/leolee9086/siyuan-dev-guide",
+  "version": "0.1.0",
+  "displayName": {
+    "default": "Segmented Clock",
+    "zh_CN": "数码管时钟"
+  },
+  "description": {
+    "default": "A digital clock widget with a seven-segment display style.",
+    "zh_CN": "一个具有七段数码管显示样式的数字时钟挂件。"
+  },
+  "readme": {
+    "default": "README.md",
+    "zh_CN": "README_zh_CN.md"
+  },
+  "funding": {
+    "openCollective": "",
+    "patreon": "",
+    "github": "",
+    "custom": [
+      "https://afdian.com/a/leolee9086"
+    ]
+  },
+  "icon": "icon.png",
+  "keywords": ["clock", "widget", "digital", "segmented"]
+} 

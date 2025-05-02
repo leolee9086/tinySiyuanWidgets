@@ -1,0 +1,20 @@
+<!-- ${displayName}挂件 -->
+<div class="widget-card">
+    <div class="widget-preview">
+        <iframe src="${widgetFolder}/index.html" class="preview-iframe"></iframe>
+    </div>
+    <div class="widget-info">
+        <h3 class="widget-title">${displayName}</h3>
+        <p class="widget-description">${description}</p>
+        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
+        <div class="file-list">
+            <ul>
+                ${fileListHtml}
+            </ul>
+        </div>
+    </div>
+    <div class="widget-actions">
+        <button class="btn btn-primary" onclick="previewWidget('${widgetFolder}')">预览</button>
+        <button class="btn btn-success" onclick="deployWidget('${widgetFolder}')">部署到思源</button>
+    </div>
+</div> 
