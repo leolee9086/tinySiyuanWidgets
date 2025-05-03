@@ -1,0 +1,16 @@
+{
+  "name": "weather-widget",
+  "author": "leolee9086 & 织",
+  "version": "0.1.0", 
+  "minAppVersion": "2.10.0",
+  "displayName": {
+    "default": "Weather Widget",
+    "zh_CN": "天气挂件"
+  },
+  "description": {
+    "default": "A beautiful weather widget with real-time data.",
+    "zh_CN": "一个美观的实时天气挂件。"
+  },
+  "readme": "README.md",
+  "keywords": ["weather", "forecast", "temperature"]
+} 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日历挂件</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <!-- 日历头部：月份导航 -->
+        <header class="calendar-header">
+            <button id="prev-month" class="month-nav" aria-label="上个月">&lt;</button>
+            <div id="current-month-year" class="current-date">2025年5月</div>
+            <button id="next-month" class="month-nav" aria-label="下个月">&gt;</button>
+            <button id="today-btn" class="today-btn">今天</button>
+        </header>
+        
+        <!-- 日历主体 -->
+        <div class="calendar-body">
+            <!-- 星期标题行 -->
+            <div class="weekdays">
+                <div class="weekday">日</div>
+                <div class="weekday">一</div>
+                <div class="weekday">二</div>
+                <div class="weekday">三</div>
+                <div class="weekday">四</div>
+                <div class="weekday">五</div>
+                <div class="weekday">六</div>
+            </div>
+            
+            <!-- 日期格子区 -->
+            <div id="days-grid" class="days-grid">
+                <!-- 日期单元格会通过JS动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 日程区域 -->
+        <div class="schedule-container">
+            <div class="schedule-header">
+                <h3 id="selected-date">2025年5月3日 日程</h3>
+                <button id="add-event" class="add-btn" aria-label="添加日程">+</button>
+            </div>
+            
+            <div id="events-list" class="events-list">
+                <!-- 事件列表会通过JS动态生成 -->
+                <div class="no-events">暂无日程安排</div>
+            </div>
+        </div>
+        
+        <!-- 事件编辑弹窗 -->
+        <div id="event-modal" class="event-modal">
+            <div class="modal-content">
+                <h3 id="modal-title">添加日程</h3>
+                <form id="event-form">
+                    <div class="form-group">
+                        <label for="event-title">标题</label>
+                        <input type="text" id="event-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-time">时间</label>
+                        <input type="time" id="event-time">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description">描述</label>
+                        <textarea id="event-description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-color">颜色</label>
+                        <select id="event-color">
+                            <option value="blue">蓝色</option>
+                            <option value="green">绿色</option>
+                            <option value="red">红色</option>
+                            <option value="orange">橙色</option>
+                            <option value="purple">紫色</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancel-btn">取消</button>
+                        <button type="submit" id="save-btn">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./script.js"></script>
+</body>
+</html> 

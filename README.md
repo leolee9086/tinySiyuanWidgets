@@ -7,13 +7,19 @@
 目前包含以下挂件：
 
 
+
+
+
 *   [模拟时钟 (analog-clock)](./analog-clock/)
+*   [日历挂件 (calendar-widget)](./calendar-widget/)
 *   [数字时钟 (digital-clock)](./digital-clock/)
 *   [翻页时钟 (flip-clock)](./flip-clock/)
 *   [沙漏计时器 (hourglass-timer)](./hourglass-timer/)
+*   [Markdown 语法参考卡片 (markdown-reference)](./markdown-reference/)
 *   [番茄计时器 (pomodoro-timer)](./pomodoro-timer/)
 *   [进度时钟 (progress-clock)](./progress-clock/)
 *   [数码管时钟 (segmented-clock)](./segmented-clock/)
+*   [天气挂件 (weather-widget)](./weather-widget/)
 *   [世界时钟 (world-clock)](./world-clock/)
 
 ## 使用

@@ -1,0 +1,18 @@
+{
+  "name": "markdown-reference",
+  "author": "leolee9086 & 织",
+  "url": "https://github.com/leolee9086/tinySiyuanWidgets",
+  "version": "1.0.0",
+  "displayName": {
+    "default": "Markdown Reference",
+    "zh_CN": "Markdown 语法参考卡片"
+  },
+  "description": {
+    "default": "A quick reference card for Markdown syntax",
+    "zh_CN": "Markdown 语法的快速参考卡片，方便在编辑时查阅"
+  },
+  "readme": {
+    "default": "Display a handy Markdown syntax cheatsheet in your notes",
+    "zh_CN": "在笔记中显示方便查阅的 Markdown 语法速查表"
+  }
+} 

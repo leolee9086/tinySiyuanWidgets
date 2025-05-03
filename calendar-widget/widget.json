@@ -1,0 +1,18 @@
+{
+  "name": "calendar-widget",
+  "author": "leolee9086 & 织",
+  "url": "https://github.com/leolee9086/tinySiyuanWidgets",
+  "version": "1.0.0",
+  "displayName": {
+    "default": "Calendar Widget",
+    "zh_CN": "日历挂件"
+  },
+  "description": {
+    "default": "A calendar widget with schedule support for SiYuan Note",
+    "zh_CN": "一个支持日程安排的日历挂件，适用于思源笔记"
+  },
+  "readme": {
+    "default": "Display a calendar with month view and daily schedules in your notes",
+    "zh_CN": "在笔记中显示月历视图和日程安排"
+  }
+} 
