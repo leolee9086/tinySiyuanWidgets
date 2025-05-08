@@ -26,8 +26,26 @@
         
         h1 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
             color: #2c3e50;
+        }
+        
+        .sponsor-link {
+            display: block;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: #e74c3c;
+        }
+        
+        .sponsor-link a {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .sponsor-link a:hover {
+            text-decoration: underline;
         }
         
         .settings-panel {
@@ -242,271 +260,7 @@
         </div>
         
         <div class="widget-grid" id="widget-grid">
-<!-- 模拟时钟挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="analog-clock/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">模拟时钟</h3>
-        <p class="widget-description">一个带指针的经典模拟时钟。</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('analog-clock')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('analog-clock')">部署到思源</button>
-    </div>
-</div> 
-<!-- 日历挂件挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="calendar-widget/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">日历挂件</h3>
-        <p class="widget-description">一个支持日程安排的日历挂件，适用于思源笔记</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('calendar-widget')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('calendar-widget')">部署到思源</button>
-    </div>
-</div> 
-<!-- 数字时钟挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="digital-clock/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">数字时钟</h3>
-        <p class="widget-description">一个简单的数字时钟挂件。</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('digital-clock')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('digital-clock')">部署到思源</button>
-    </div>
-</div> 
-<!-- 翻页时钟挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="flip-clock/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">翻页时钟</h3>
-        <p class="widget-description">模拟老式翻页效果的时钟，显示时分秒和日期</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('flip-clock')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('flip-clock')">部署到思源</button>
-    </div>
-</div> 
-<!-- 沙漏计时器挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="hourglass-timer/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">沙漏计时器</h3>
-        <p class="widget-description">可设置时间的沙漏式可视化计时器</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('hourglass-timer')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('hourglass-timer')">部署到思源</button>
-    </div>
-</div> 
-<!-- Markdown 语法参考卡片挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="markdown-reference/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">Markdown 语法参考卡片</h3>
-        <p class="widget-description">Markdown 语法的快速参考卡片，方便在编辑时查阅</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('markdown-reference')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('markdown-reference')">部署到思源</button>
-    </div>
-</div> 
-<!-- 番茄计时器挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="pomodoro-timer/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">番茄计时器</h3>
-        <p class="widget-description">25分钟工作，5分钟休息的番茄工作法计时器</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('pomodoro-timer')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('pomodoro-timer')">部署到思源</button>
-    </div>
-</div> 
-<!-- 进度时钟挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="progress-clock/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">进度时钟</h3>
-        <p class="widget-description">显示数字时间，并附带年/月/周进度条</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('progress-clock')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('progress-clock')">部署到思源</button>
-    </div>
-</div> 
-<!-- 数码管时钟挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="segmented-clock/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">数码管时钟</h3>
-        <p class="widget-description">一个具有七段数码管显示样式的数字时钟挂件。</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('segmented-clock')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('segmented-clock')">部署到思源</button>
-    </div>
-</div> 
-<!-- 天气挂件挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="weather-widget/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">天气挂件</h3>
-        <p class="widget-description">一个美观的实时天气挂件。</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>widget.json</li>
-                            <li>AInote.md</li>
-                            <li>file-list.json</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('weather-widget')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('weather-widget')">部署到思源</button>
-    </div>
-</div> 
-<!-- 世界时钟挂件 -->
-<div class="widget-card">
-    <div class="widget-preview">
-        <iframe src="world-clock/index.html" class="preview-iframe"></iframe>
-    </div>
-    <div class="widget-info">
-        <h3 class="widget-title">世界时钟</h3>
-        <p class="widget-description">显示多个时区的时间</p>
-        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
-        <div class="file-list">
-            <ul>
-                <li>widget.json</li>
-                            <li>index.html</li>
-                            <li>style.css</li>
-                            <li>script.js</li>
-                            <li>AInote.md</li>
-            </ul>
-        </div>
-    </div>
-    <div class="widget-actions">
-        <button class="btn btn-primary" onclick="previewWidget('world-clock')">预览</button>
-        <button class="btn btn-success" onclick="deployWidget('world-clock')">部署到思源</button>
-    </div>
-</div> 
+${widgetCards}
         </div>
     </div>
     
