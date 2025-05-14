@@ -76,3 +76,20 @@
 * 用户数据存储选择localStorage而非思源API，优点是实现简单、独立性强；但缺点是数据仅限于当前浏览器，跨设备访问时无法同步
 * UI设计方面，在保持功能完整的同时，需要控制界面复杂度，确保用户能够轻松理解和操作
 * JavaScript中日期对象（Date）的操作容易出错，需要格外注意日期格式化和计算的准确性 
+
+### 2025-05-14 (织)
+
+*   **新增挂件: `installed-widget-lister`**
+    *   在 `tinySiyuanWidgets/` 目录下创建了新的挂件 `installed-widget-lister`。
+    *   **功能**: 该挂件用于列出当前思源工作空间中所有已安装的挂件。
+    *   **实现**:
+        *   包含 `widget.json` (挂件描述文件), `index.html` (包含 HTML, CSS, JS 的主文件), `README.md` (说明文档), 和一个占位 `icon.png`。
+        *   `index.html` 中的 JavaScript 会尝试调用思源的 `/api/bazaar/getInstalledWidget` API (优先使用 `window.siyuan.fetchPost`，如果不可用则回退到标准 `fetch`) 来获取已安装挂件列表。
+        *   获取到的挂件列表会以卡片形式展示，包含挂件名称、作者和版本号。
+        *   包含基本的加载状态和错误提示。
+    *   **遵从原则**: 挂件是纯静态资源，无需构建步骤，符合 `tinySiyuanWidgets` 项目的既定原则。
+*   **更新 `index.html` (根目录)**:
+    *   为新创建的 `installed-widget-lister` 挂件在根目录的 `index.html` 预览和部署页面中添加了对应的展示卡片。
+    *   卡片包含预览iframe、挂件中英文名称、描述、文件列表（widget.json, index.html, README.md, icon.png）以及预览和部署按钮。
+    *   为 `installed-widget-lister` 创建了 `file-list.json` 文件，以便 `index.html` 中的部署脚本能正确识别其文件。
+*   **记录时间**: 2025-05-14 13:03:21 GMT+0800 (中国标准时间) 

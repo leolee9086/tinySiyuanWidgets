@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>已安装挂件列表</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 15px;
+            background-color: var(--b3-theme-background);
+            color: var(--b3-theme-on-background);
+            font-size: 14px;
+        }
+        .widget-list-container {
+            max-height: 400px; /* Adjust as needed */
+            overflow-y: auto;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: var(--b3-theme-surface);
+            border: 1px solid var(--b3-theme-outline);
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        li strong {
+            font-size: 1.1em;
+            color: var(--b3-theme-primary);
+        }
+        .meta {
+            font-size: 0.9em;
+            color: var(--b3-theme-on-surface-variant);
+            margin-top: 4px;
+        }
+        .error {
+            color: var(--b3-theme-error);
+            padding: 10px;
+            background-color: var(--b3-theme-error-container);
+            border: 1px solid var(--b3-theme-error);
+            border-radius: 4px;
+        }
+        .loading {
+            padding: 10px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--b3-theme-primary);
+        }
+    </style>
+</head>
+<body>
+    <h1>已安装挂件列表</h1>
+    <div id="widget-list-container" class="widget-list-container">
+        <div id="loading-message" class="loading">正在加载挂件列表...</div>
+        <ul id="widget-list"></ul>
+        <div id="error-message" class="error" style="display: none;"></div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const widgetListElement = document.getElementById('widget-list');
+        const loadingMessageElement = document.getElementById('loading-message');
+        const errorMessageElement = document.getElementById('error-message');
+
+        async function fetchInstalledWidgets() {
+            try {
+                // 在思源挂件环境中，通常使用 siyuan.fetchSyncPost 或 siyuan.fetchPost
+                // 这里我们模拟一个异步调用，并假设思源环境会处理认证
+                let response;
+                if (window.siyuan && window.siyuan.fetchPost) {
+                    response = await window.siyuan.fetchPost('/api/bazaar/getInstalledWidget', { keyword: "" });
+                } else {
+                    // Fallback for testing outside Siyuan or if siyuan.fetchPost is not available
+                    // This will likely fail due to CORS or auth if run directly in a browser without Siyuan context or a proxy
+                    console.warn("Siyuan API fetchPost not available, attempting standard fetch. This may not work due to CORS/auth.");
+                    const fetchResponse = await fetch('/api/bazaar/getInstalledWidget', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            // 'Authorization': 'Token YOUR_TOKEN_HERE' // Token would be needed for direct fetch
+                        },
+                        body: JSON.stringify({ keyword: "" })
+                    });
+                    if (!fetchResponse.ok) {
+                        throw new Error(`HTTP error! status: ${fetchResponse.status}`);
+                    }
+                    response = await fetchResponse.json();
+                }
+                
+                loadingMessageElement.style.display = 'none';
+
+                if (response.code === 0 && response.data && response.data.packages) {
+                    const packages = response.data.packages;
+                    if (packages.length === 0) {
+                        widgetListElement.innerHTML = '<li>未找到已安装的挂件。</li>';
+                        return;
+                    }
+                    packages.forEach(pkg => {
+                        const listItem = document.createElement('li');
+                        const displayName = (pkg.displayName && (pkg.displayName.zh_CN || pkg.displayName.default)) || pkg.name || '未知挂件';
+                        const author = pkg.author || '未知作者';
+                        const version = pkg.version || '未知版本';
+                        
+                        listItem.innerHTML = `
+                            <strong>${escapeHtml(displayName)}</strong>
+                            <div class="meta">
+                                作者: ${escapeHtml(author)} &nbsp;&nbsp; 版本: ${escapeHtml(version)}
+                            </div>
+                        `;
+                        widgetListElement.appendChild(listItem);
+                    });
+                } else {
+                    throw new Error(response.msg || '获取挂件列表失败，响应格式不正确。');
+                }
+            } catch (error) {
+                console.error('获取已安装挂件失败:', error);
+                loadingMessageElement.style.display = 'none';
+                errorMessageElement.textContent = `加载挂件列表失败: ${error.message}`;
+                errorMessageElement.style.display = 'block';
+            }
+        }
+
+        function escapeHtml(unsafe) {
+            if (unsafe === null || typeof unsafe === 'undefined') {
+                return '';
+            }
+            return unsafe
+                 .toString()
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        }
+
+        fetchInstalledWidgets();
+    });
+    </script>
+</body>
+</html> 

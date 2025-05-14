@@ -507,6 +507,29 @@
         <button class="btn btn-success" onclick="deployWidget('world-clock')">部署到思源</button>
     </div>
 </div> 
+<!-- 已安装挂件列表挂件 -->
+<div class="widget-card">
+    <div class="widget-preview">
+        <iframe src="installed-widget-lister/index.html" class="preview-iframe"></iframe>
+    </div>
+    <div class="widget-info">
+        <h3 class="widget-title">已安装挂件列表</h3>
+        <p class="widget-description">一个小挂件，用于列出当前工作空间中所有已安装的思源挂件。</p>
+        <span class="file-list-toggle" onclick="toggleFileList(this)">查看文件清单</span>
+        <div class="file-list">
+            <ul>
+                <li>widget.json</li>
+                <li>index.html</li>
+                <li>README.md</li>
+                <li>icon.png</li>
+            </ul>
+        </div>
+    </div>
+    <div class="widget-actions">
+        <button class="btn btn-primary" onclick="previewWidget('installed-widget-lister')">预览</button>
+        <button class="btn btn-success" onclick="deployWidget('installed-widget-lister')">部署到思源</button>
+    </div>
+</div>
         </div>
     </div>
     

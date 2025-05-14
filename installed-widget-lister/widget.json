@@ -1,0 +1,20 @@
+{
+  "name": "installed-widget-lister",
+  "displayName": {
+    "default": "Installed Widgets Lister",
+    "zh_CN": "已安装挂件列表"
+  },
+  "description": {
+    "default": "A tiny widget to list all installed Siyuan widgets in the current workspace.",
+    "zh_CN": "一个小挂件，用于列出当前工作空间中所有已安装的思源挂件。"
+  },
+  "author": "织 (AI)",
+  "version": "0.1.0",
+  "minAppVersion": "2.8.8",
+  "icon": "icon.png",
+  "readme": "README.md",
+  "url": "index.html",
+  "frontends": ["desktop", "browser-desktop"],
+  "backends": [],
+  "type": "widget"
+} 
